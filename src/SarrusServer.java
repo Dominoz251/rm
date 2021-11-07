@@ -2,26 +2,26 @@ import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
 import java.rmi.server.UnicastRemoteObject;
 
-public class Server {
-    public Server() {
+public class SarrusServer {
+    public SarrusServer() {
     }
 
     public static void main(String args[]) {
         try {
             // Instantiating the implementation class
 //            ImplExample obj = new ImplExample();
-            SarrusImpl obj = new SarrusImpl();
+            AgentImpl obj = new AgentImpl();
 
             // Exporting the object of implementation class
             // (here we are exporting the remote object to the stub)
 //            Hello stub = (Hello) UnicastRemoteObject.exportObject(obj, 0);
-            Sarrus stub = (Sarrus) UnicastRemoteObject.exportObject(obj, 0);
+            AddAgent stub = (AddAgent) UnicastRemoteObject.exportObject(obj, 1);
 
 
             // Binding the remote object (stub) in the registry
             Registry registry = LocateRegistry.getRegistry();
 
-            registry.bind("Sarrus", stub);
+            registry.bind("AddAgent", stub);
             System.err.println("Server ready");
         } catch (Exception e) {
             System.err.println("Server exception: " + e.toString());

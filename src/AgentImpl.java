@@ -1,12 +1,16 @@
 public class AgentImpl implements AddAgent {
-    @Override
-    public int add(int a, int b, int c) {
-        return a + b + c;
+
+    public AgentImpl() {
     }
 
     @Override
-    public int multiple(int a, int b, int c) {
-        return a * b * c;
+    public int add(int a, int b) {
+        return a + b;
+    }
+
+    @Override
+    public int multiple(int a, int b) {
+        return a * b;
     }
 
     @Override
