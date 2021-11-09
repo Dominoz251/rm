@@ -8,29 +8,6 @@ public class SarrusImpl implements Sarrus {
 
     @Override
     public int compute(int[][] tab) throws RuntimeException{
-//        List<AddThread> threads = new LinkedList<>();
-//
-//
-//        threads.add(new AddThread(new Operation( Operation("add",
-//                n, 0)umbers[0][0],
-//                numbers[1][1],
-//                1)));
-//        threads.add(new AddThread(new Operation( Operation("sub",
-//                n, 0)umbers[0][0],
-//                numbers[1][1],
-//                1)));
-//        threads.get(0).start();
-//        threads.get(1).start();
-//
-//        try {
-//            threads.get(0).join();
-//            System.out.println("Thread result" + threads.get(0).getResult());
-//            threads.get(1).join();
-//            System.out.println("Thread result" + threads.get(1).getResult());
-//
-//        } catch (InterruptedException e) {
-//            e.printStackTrace();
-//        }
         System.out.println(Arrays.deepToString(tab));
 
         LinkedList<OperationThread> threads = new LinkedList<>();

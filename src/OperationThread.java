@@ -20,6 +20,7 @@ public class OperationThread extends Thread {
 
             if (Objects.equals(operation.getOperation(), "add")) {
                 result = stub.add(operation.getArg1(), operation.getArg2());
+                sleep(1000);
                 printOperation(operation.getArg1(),
                         operation.getArg2(),
                         operation.getOperation(),
@@ -27,6 +28,7 @@ public class OperationThread extends Thread {
                         result);
             } else if (Objects.equals(operation.getOperation(), "multiple")) {
                 result = stub.multiple(operation.getArg1(), operation.getArg2());
+                sleep(1000);
                 printOperation(operation.getArg1(),
                         operation.getArg2(),
                         operation.getOperation(),
@@ -34,6 +36,7 @@ public class OperationThread extends Thread {
                         result);
             } else if (Objects.equals(operation.getOperation(), "sub")) {
                 result = stub.sub(operation.getArg1(), operation.getArg2());
+                sleep(1000);
                 printOperation(operation.getArg1(),
                         operation.getArg2(),
                         operation.getOperation(),

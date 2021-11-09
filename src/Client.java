@@ -10,20 +10,30 @@ public class Client {
 
     public static void main(String[] args) {
         try {
-            // Getting the registry
             Registry registry = LocateRegistry.getRegistry(null);
 
-            // Looking up the registry for the remote object
-//            Hello stub = (Hello) registry.lookup("Hello");
+
             Sarrus stub = (Sarrus) registry.lookup("Sarrus");
 
-
-            // Calling the remote method using the obtained object
             int[][] tab = generateArray();
             System.out.println(Arrays.deepToString(tab));
-            System.out.println(stub.compute(tab));
 
-            // System.out.println("Remote method invoked");
+            long start = System.currentTimeMillis();
+            int result = sub(add(add(mult(mult(tab[0][0], tab[1][1]), tab[2][2]), mult(mult(tab[0][1], tab[1][2]), tab[2][0])), mult(mult(tab[0][2], tab[1][0]), tab[2][1])),
+                    add(add(mult(mult(tab[0][2], tab[1][1]), tab[2][0]), mult(mult(tab[0][0], tab[1][2]), tab[2][1])), mult(mult(tab[0][1], tab[1][0]), tab[2][2])));
+            System.out.println("Normal result: " + result);
+            long finish = System.currentTimeMillis();
+            long timeElapsed = finish - start;
+            System.out.println("Normal time: "+ timeElapsed);
+
+
+
+            long startRMI = System.currentTimeMillis();
+            System.out.println("RMI result: "+stub.compute(tab));
+            long finishRMI = System.currentTimeMillis();
+            long timeElapsedRMI = finishRMI - startRMI;
+            System.out.println("RMI time: "+ timeElapsedRMI);
+
         } catch (Exception e) {
             System.err.println("Client exception: " + e.toString());
             e.printStackTrace();
@@ -39,5 +49,20 @@ public class Client {
             }
         }
         return array;
+    }
+
+    static int mult(int a, int b) throws InterruptedException {
+        Thread.sleep(1000);
+        return a*b;
+    }
+
+    static int add(int a, int b) throws InterruptedException {
+        Thread.sleep(1000);
+        return a+b;
+    }
+
+    static int sub(int a, int b) throws InterruptedException {
+        Thread.sleep(1000);
+        return a-b;
     }
 }
