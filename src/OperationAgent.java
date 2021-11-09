@@ -1,7 +1,7 @@
 import java.rmi.Remote;
 import java.rmi.RemoteException;
 
-public interface AddAgent extends Remote {
+public interface OperationAgent extends Remote {
 
     int add(int a, int b) throws RemoteException;
 

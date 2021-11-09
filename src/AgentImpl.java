@@ -1,4 +1,4 @@
-public class AgentImpl implements AddAgent {
+public class AgentImpl implements OperationAgent {
 
     public AgentImpl() {
     }

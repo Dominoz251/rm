@@ -1,5 +1,6 @@
 import java.rmi.registry.LocateRegistry;
 import java.rmi.registry.Registry;
+import java.util.Arrays;
 import java.util.Random;
 
 
@@ -18,7 +19,9 @@ public class Client {
 
 
             // Calling the remote method using the obtained object
-            System.out.println(stub.compute(2));
+            int[][] tab = generateArray();
+            System.out.println(Arrays.deepToString(tab));
+            System.out.println(stub.compute(tab));
 
             // System.out.println("Remote method invoked");
         } catch (Exception e) {

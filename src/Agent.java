@@ -13,16 +13,16 @@ public class Agent {
 
             // Looking up the registry for the remote object
 //            Hello stub = (Hello) registry.lookup("Hello");
-            AddAgent stub = (AddAgent) registry.lookup("AddAgent");
+            OperationAgent stub = (OperationAgent) registry.lookup("Agent_" +Integer.parseInt(args[3]));
 
 
             // Calling the remote method using the obtained object
             if(Objects.equals(args[0], "add")) {
-                System.out.println(stub.add(Integer.parseInt(args[1]), Integer.parseInt(args[2])));
+                System.out.println("To jest wynik: " + stub.add(Integer.parseInt(args[1]), Integer.parseInt(args[2])));
             } else if (Objects.equals(args[0], "multiple")) {
-                System.out.println(stub.multiple(Integer.parseInt(args[1]), Integer.parseInt(args[2])));
+                System.out.println("To jest wynik: " + stub.multiple(Integer.parseInt(args[1]), Integer.parseInt(args[2])));
             } else if (Objects.equals(args[0], "sub")){
-                System.out.println(stub.sub(Integer.parseInt(args[1]), Integer.parseInt(args[2])));
+                System.out.println("To jest wynik: " + stub.sub(Integer.parseInt(args[1]), Integer.parseInt(args[2])));
             }
 
             // System.out.println("Remote method invoked");
